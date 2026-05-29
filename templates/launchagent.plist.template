@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.obsidian-bookshelf.{{LIBRARY}}.watcher</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{PYTHON}}</string>
+        <string>{{SCRIPT}}</string>
+        <string>{{LIBRARY}}</string>
+    </array>
+
+    <key>WatchPaths</key>
+    <array>
+        <string>{{INBOX}}</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>StandardOutPath</key>
+    <string>{{LOG}}.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{LOG}}.stderr.log</string>
+</dict>
+</plist>

@@ -1,0 +1,19 @@
+# Your local config (paths are personal)
+config.ini
+
+# Never commit books — this tool processes your library, it doesn't host it
+*.epub
+*.pdf
+*.djvu
+*.mobi
+*.azw3
+*.zip
+
+# Generated working dirs (if you ever point library_root inside the repo)
+*-library/
+.logs/
+
+# Python / OS cruft
+__pycache__/
+*.pyc
+.DS_Store

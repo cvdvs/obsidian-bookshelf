@@ -10,6 +10,17 @@ The original book stays in your library — only the Markdown goes to the vault.
 Built for people who use Obsidian as a research or work knowledge base and want
 their books to live there as searchable, linkable, citable notes.
 
+## Where this fits
+
+This is **only the ingestion step**. It transforms books in different formats
+(EPUB, PDF) into clean per-chapter `.md` — raw material ready to be fed into an
+**LLM-readable knowledge wiki** in Obsidian. It is not the wiki itself.
+
+The approach is inspired by Andrej Karpathy's thinking that knowledge bases are
+increasingly built to be *read by LLMs*, not only by people — a curated corpus
+your models can ingest and reason over. `obsidian-bookshelf` gets your books into
+that corpus; how you structure, link, and query the wiki on top is a separate layer.
+
 ---
 
 ## How it works

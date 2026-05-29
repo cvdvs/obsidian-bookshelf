@@ -2,6 +2,8 @@
 
 **Drop an EPUB or PDF into a folder. Get clean, per-chapter Markdown in your Obsidian vault — automatically.**
 
+![obsidian-bookshelf in action: a book dropped into the inbox becomes per-chapter notes in Obsidian](screenshots/demo.gif)
+
 A small, local, no-cloud pipeline for turning a shelf of ebooks into a linkable
 knowledge base. You drop a book into an inbox folder; a background watcher splits
 it into one Markdown file per chapter and files it into the right Obsidian vault.
@@ -154,11 +156,27 @@ EPUBs (and Calibre's PDF→EPUB output) carry a lot of styling cruft. The conver
 
 ---
 
+## Roadmap
+
+Ideas on the list — contributions very welcome:
+
+- **OCR for scanned PDFs** — scanned / image-only books can't be read as text today.
+  An optional OCR pass (e.g. [`ocrmypdf`](https://github.com/ocrmypdf/OCRmyPDF) /
+  Tesseract) before conversion would let them through.
+- **Category auto-sorter** — file processed source books into category subfolders
+  automatically (e.g. from a metadata sheet) instead of by hand via `_unsorted/`.
+- **Linux / Windows auto-watchers** — systemd and Task Scheduler equivalents of the
+  macOS LaunchAgent (`--watch` already works everywhere in the meantime).
+- **More input formats** — `.doc`, `.mobi`, `.djvu` via Calibre.
+- **Filename normalization** — tidy messy source filenames so chapter-folder slugs
+  come out clean.
+
+---
+
 ## Contributing
 
-Issues and PRs welcome — especially Linux/Windows auto-watchers, OCR for scanned
-PDFs, and a category auto-sorter. Keep it dependency-light (standard library +
-the two external tools).
+Issues and PRs welcome — the Roadmap above is a good place to start. Keep it
+dependency-light (standard library + the two external tools, pandoc and Calibre).
 
 ## License
 

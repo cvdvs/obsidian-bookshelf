@@ -344,6 +344,8 @@ def convert_epub(epub_path: Path, out_dir: Path) -> dict:
         readme_lines = []
         chapter_n = 0
         supporting_n = 0
+        written_ch = 0
+        written_sup = 0
         log = []
 
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -392,7 +394,17 @@ def convert_epub(epub_path: Path, out_dir: Path) -> dict:
                 if not md_text.lstrip().startswith("#"):
                     md_text = front + md_text
                 md_target.write_text(md_text, encoding="utf-8")
+                if kind == "chapter":
+                    written_ch += 1
+                else:
+                    written_sup += 1
                 readme_lines.append(f"- `{rel}` — {title}")
+
+        if written_ch + written_sup == 0:
+            raise RuntimeError(
+                f"no sections converted from {epub_path.name} "
+                f"(pandoc produced nothing for all {len(opf_data['spine'])} spine items)"
+            )
 
         if not any(chapters_dir.iterdir()):
             chapters_dir.rmdir()
@@ -419,8 +431,8 @@ def convert_epub(epub_path: Path, out_dir: Path) -> dict:
         (out_dir / "README.md").write_text("\n".join(readme) + "\n", encoding="utf-8")
 
     return {
-        "chapters": chapter_n,
-        "supporting": supporting_n,
+        "chapters": written_ch,
+        "supporting": written_sup,
         "title": title,
     }
 
